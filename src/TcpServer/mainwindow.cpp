@@ -75,12 +75,13 @@ void MainWindow::on_btnSend_clicked() {
 void MainWindow::onSocketReadyRead() {
     while(tcpSocket->canReadLine()) {
         QString line = tcpSocket->readLine();
-        QRegularExpression re("[a-z]+|[A-Z]");
+        QRegularExpression re("[a-z]");
         QRegularExpressionMatch match = re.match(line);
         if (match.hasMatch()) {
+            ui->plainTextEdit->appendPlainText("[CONVERT in]" + line);
             QByteArray str = line.toUpper().toUtf8();
             tcpSocket->write(str);
-            ui->plainTextEdit->appendPlainText("[convert]" + line);
+            ui->plainTextEdit->appendPlainText("[CONVERT out] " + str);
         } else {
             ui->plainTextEdit->appendPlainText("[in]" + line);
         }
