@@ -14,15 +14,32 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private:
+    QLabel* LabListen;
+    QLabel* LabSocketState;
+
+    QTcpServer* tcpServer;
+    QTcpSocket* tcpSocket;
+
+    QString getLocalIP();
+
+protected:
+    void  closeEvent(QCloseEvent* event);
+
 private slots:
+    void onNewConnection();
+    void onSocketStateChange(QAbstractSocket::SocketState socketState);
+    void onClientConnected();
+    void onClientDisconnected();
+    void onSocketReadyRead();
+
     void on_actStart_triggered();
     void on_actStop_triggered();
     void on_actClear_triggered();
     void on_btnSend_clicked();
-    void on_actHostInfo_triggered();
 
 private:
     Ui::MainWindow *ui;

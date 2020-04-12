@@ -176,18 +176,6 @@
     <string>清空文本框</string>
    </property>
   </action>
-  <action name="actHostInfo">
-   <property name="icon">
-    <iconset resource="res/res.qrc">
-     <normaloff>:/images/images/110.JPG</normaloff>:/images/images/110.JPG</iconset>
-   </property>
-   <property name="text">
-    <string>本机地址</string>
-   </property>
-   <property name="toolTip">
-    <string>获取本机地址</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
